@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C2C Plat</title>
+</head>
+
+<body>
+
+<header id="header">
+    <!-- Top strip -->
+    <div class="custom-top-strip font-rale font-size-12">
+        <div>
+            <span class="text-black-50 font-size-10">Welcome :)</span>
+            <a href="#" class="font-size-10">Sign In/Sign Up</a>
+        </div>
+        <div>
+            <a href="#">ON SALE</a>
+            <a href="#appleBanner">BRANDS</a>
+            <a href="#">FAQ</a>
+            <a href="#">CONTACT</a>
+            <a href="#" style="position: relative;">
+                <span class="font-size-16"><i class="fas fa-shopping-cart"></i></span>
+                <span class="num-items" style="position:absolute; top:-5px; right:-10px; border-radius: 50%; background-color:#E44C4C; color:white; width: 15px; height: 15px; display:flex; justify-content:center; align-items:center; font-size:10px;">0</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Main Navigation -->
+    <nav class="custom-navbar">
+        <div class="custom-navbar-container">
+            <!-- Brand -->
+            <a class="font-weight-bold color-primary" href="#" style="font-size: 32px; margin-right: 20px; text-decoration: none;">GloMart</a>
+            
+            <!-- Search Form -->
+            <form class="custom-search-form">
+                <div class="custom-search-input-group">
+                    <span class="custom-search-icon"><i class="fas fa-search"></i></span>
+                    <input class="custom-search-input font-rale" type="search" placeholder="Search for anything" aria-label="Search">
+                   
+                </div>
+                <button class="custom-search-btn color-primary-bg" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+ 
+ <main id="main-site" style="min-height: 60vh;">
+    <section class="container mt-5" style="margin-top: 50px; margin-bottom: 50px;">
+        <h2 class="mb-4 text-capitalize" style="font-size: 36px; font-weight: 800; color: #111; margin-bottom: 20px;">PC Parts</h2>
+        
+        <div class="filters-container mb-4" style="margin-bottom: 30px;">
+            <button class="filter-pill">Price (R) <i class="fas fa-caret-down"></i></button>
+            <button class="filter-pill">Brand <i class="fas fa-caret-down"></i></button>
+            <button class="filter-pill">On sale</button>
+            <button class="filter-pill">Sent from <i class="fas fa-caret-down"></i></button>
+        </div>
+
+        <div class="product-grid" id="categoryGrid" data-category="pc parts">
+            <!-- Items injected by app.js -->
+        </div>
+    </section>
+
+
+ <footer class="bg-dark text-white py-5 mt-5" style="background-color: #343a40;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h5 class="font-rubik font-weight-bold mb-3">Buy & Sell</h5>
+                <ul class="list-unstyled font-rale" style="line-height: 2;">
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">How it Works</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Buyer Protection</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Seller Guidelines</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Safe Trade Tips</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Dispute Resolution</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h5 class="font-rubik font-weight-bold mb-3">About & Support</h5>
+                <ul class="list-unstyled font-rale" style="line-height: 2;">
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">About Us</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Help Center</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Contact Us</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Terms of Service</a></li>
+                    <li><a href="#" class="text-white-50 text-decoration-none" style="color: rgba(255,255,255,.5);">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-3 border-top pt-3 border-secondary">
+            <div class="col-12 text-center font-rale font-size-14" style="color: rgba(255,255,255,.5);">
+                &copy; 2026 C2C Plat. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

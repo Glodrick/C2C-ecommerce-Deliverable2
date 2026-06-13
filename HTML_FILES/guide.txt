@@ -1,0 +1,59 @@
+# C2C Plat - Developer Guide
+
+## Introduction
+Welcome to the C2C Plat, a modern Customer-to-Customer (C2C) e-commerce marketplace designed to effortlessly connect buyers and sellers. This platform serves as a virtual hub where individuals can list their used or brand-new electronics—such as smartphones, computers, peripherals, and accessories—and directly negotiate or transact with interested buyers. Users can easily browse categorized listings, search for specific components, or discover curated top picks like "Brand New" devices and exclusive "Sale" items. By leveraging an intuitive interface with quick category filters, the website enables an efficient shopping experience across all devices. Trust and safety are built into the core of the platform, as our integrated footer provides quick access to buyer protection guidelines, dispute resolution steps, and seller protocols. Whether you are looking to upgrade your tech stack or turn your old gadgets into cash, C2C Plat provides a robust, responsive, and reliable ecosystem to make it happen securely.
+
+## Recent Project Modifications
+
+### 1. Dynamic Product Rendering
+- Replaced hardcoded HTML product carousels ("Brand New" and "Sale" sections) on the homepage with a dynamic JavaScript approach.
+- Added comprehensive JSON-like arrays in `app.js` holding all product data (including name, details, price, condition, original price, and images).
+- Built a unified `createProductCard()` function to generate interactive product cards using standard components.
+
+### 2. Category Pages & Grid Filtering
+- Created dedicated category pages: `phones.html`, `peripherals.html`, `pc_parts.html`, and `accessories.html`.
+- Implemented a unified `allProductsList` in `app.js` mapped with category tags.
+- Displayed products in an organized, responsive `.product-grid` rather than a horizontal carousel.
+- Added interactive filter pill buttons (e.g., Price, Brand, On sale) for advanced searching capabilities.
+- Dynamically populated category pages using the `renderCategoryGrid()` function.
+
+### 3. Product Details Page Revamp
+- Overhauled `productPage.html` to move away from rigid, absolute positioning to a fluid, Bootstrap-powered grid layout (`container`, `row`, `col-md-6`).
+- Improved typography and spacing for the product title, rating, pricing, and policy icons.
+- Updated the main feature to display the "Apple iPhone 17" with accurate data, specs (bullets), and a custom product description.
+- Inserted a dynamic "Related Products" slider at the bottom of the page, mirroring the homepage functionality.
+
+### 4. Global Footer Integration
+- Designed a unified 2-column footer tailored for a C2C environment.
+- Programmatically injected the footer into all HTML pages (`index.html`, `productPage.html`, category pages, cart, and admin page).
+- Included links for "Buy & Sell" (Buyer Protection, Seller Guidelines) and "About & Support" (Terms of Service, Privacy Policy).
+
+### 5. Responsive Design (Mobile & Tablet)
+- Extended `style.css` with a dedicated `@media (max-width: 768px)` block.
+- Stacked header elements, such as the top strip navigation and the primary search bar, vertically for small screens.
+- Adjusted product layout policies, grids, and image wrappers to be 100% width on mobile, ensuring no horizontal scrolling or overflow.
+Admin Dashboard Guide
+
+1. Structure of the Code
+- admin.html: Contains the structural markup for the dashboard, linking to Bootstrap, FontAwesome, your existing `style.css`, and a new `admin.css`. It features a clean container with a single table for display.
+- admin.css: Houses the styling specific to the dashboard to match your theme (rounded corners, box shadows, gradients, and typography) without interfering with the rest of your site.
+- admin.js: Stores the logic to populate the table with our mock data dynamically.
+
+2. How to Add New Rows Manually
+Open `admin.js` and locate the `mockData` array around line 5. 
+Add a new object inside the array like this (make sure to include a comma after the previous object):
+{
+    role: "Buyer", // or "Seller"
+    orderName: "New Item Name",
+    orderNumber: "#ORD-12345",
+    imageSrc: "./assets/your-new-image.jpg"
+}
+Refresh the page, and the script will automatically generate the new row!
+
+3. How to Update Asset Image Paths
+Inside the `mockData` objects in `admin.js`, update the `imageSrc` property string. Always ensure the path is correct relative to the `admin.html` file (e.g., `./assets/new-image.png`).
+
+4. How to Tweak the Table Layout
+- Table Sizes/Padding: Open `admin.css` and adjust the padding in `.admin-table th` and `.admin-table td`.
+- Colors: To change the header background color off `color-primary-bg`, remove the class from the `<tr>` in `admin.html` (line 21) and add your own class or inline style. Role badges colors can be customized by editing the `.role-buyer` and `.role-seller` selectors in `admin.css`.
+- Box Shadow: If the container drop-shadow is too intense, tweak the `box-shadow` property under `.dashboard-container` in `admin.css`.

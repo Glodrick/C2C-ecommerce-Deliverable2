@@ -454,18 +454,18 @@ hr {
   flex-wrap: wrap;
 }
 
-.product {
+.product{
   overflow: hidden;
   background: #ffffff;
   color: #21201e;
   text-align: center;
   width: 240px;
   height: 340px;
-  padding: 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  border-radius: 12px;
+  justify-content:center;
+  margin: 2rem
 }
 
 .product:hover img{
@@ -678,43 +678,17 @@ font-family: "Baloo Thambi 2", cursive;
 /* Custom Product Card Additions */
 .custom-product-card {
     text-align: left !important;
-    height: 360px !important;          /* strict uniform height */
-    padding: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden;
-    border-radius: 12px;
+    height: auto !important;
+    min-height: 380px;
+    padding: 1.5rem !important;
 }
 
-/* ── Image container: fixed height, cover crop ── */
-.card-img-link {
-    display: block;
-    width: 100%;
-    height: 190px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.card-img-link img,
-.custom-product-img,
 .custom-thumbnail {
-    width: 100% !important;
-    height: 190px !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    display: block !important;
-    margin: 0 !important;
-    max-height: unset !important;
     border: none;
-}
-
-/* Card body fills remaining space */
-.custom-card-body {
-    padding: 12px 14px 14px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: hidden;
+    max-height: 160px;
+    object-fit: contain;
+    margin: 0 auto 15px auto;
+    display: block;
 }
 
 .custom-product-info {
@@ -728,20 +702,12 @@ font-family: "Baloo Thambi 2", cursive;
     font-weight: bold;
     margin-bottom: 5px;
     color: #21201e;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-.custom-product-details {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 12px;
-    flex-grow: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+.product-details {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .detail-dot {
@@ -1194,77 +1160,4 @@ font-family: "Baloo Thambi 2", cursive;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-}
-
-/* ════════════════════════════════════════════════════════════════
-   MY LISTINGS PAGE — CSS Grid Layout
-   ════════════════════════════════════════════════════════════════ */
-.my-listings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 24px;
-    margin-top: 10px;
-}
-
-.my-listing-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.my-listing-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.my-listing-card img {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-}
-
-.my-listing-info {
-    padding: 14px 16px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.my-listing-info h6 {
-    font-weight: 700;
-    font-size: 15px;
-    color: #222;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.my-listing-price {
-    font-size: 18px;
-    font-weight: 800;
-    color: #E44C4C;
-}
-
-.badge-status {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    width: fit-content;
-}
-
-.badge-active {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
-
-.badge-sold {
-    background: #ffeeed;
-    color: #c62828;
 }
