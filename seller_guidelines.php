@@ -10,7 +10,7 @@ require_once 'header.php';
             <p>Selling on GloMart is a privilege. We maintain a high standard for our marketplace to ensure buyers feel confident. Follow these guidelines to build a reputable store and avoid account suspension.</p>
             
             <h4 style="margin-top:30px;color:#2b3b4e;font-weight:700;">1. KYC Verification is Mandatory</h4>
-            <p>Every seller must pass our Know Your Customer (KYC) verification. When you apply to become a seller, our system (powered by VerifyNow) securely verifies your identity. Only verified users can post listings.</p>
+            <p>Every seller must pass our Know Your Customer (KYC) verification. When you apply to become a seller, our secure backend system connects directly to the live VerifyNow API to verify your identity. Only verified users can post listings.</p>
 
             <h4 style="margin-top:30px;color:#2b3b4e;font-weight:700;">2. Accurate Listings & Admin Approval</h4>
             <p>When you create a listing, it does not go live immediately. It is placed into an <strong>Awaiting Approval</strong> queue. Our Admins manually review your item details, price, and images to ensure they meet our quality standards.</p>

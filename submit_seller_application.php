@@ -7,8 +7,23 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$kyc_status      = $_POST['kyc_status'] ?? 'unknown';
-$kyc_match_score = (int)($_POST['kyc_match_score'] ?? 0);
+$id_number = $_POST['id_number'] ?? '';
+if (empty($id_number) || strlen($id_number) !== 13 || !is_numeric($id_number)) {
+    echo json_encode(['success' => false, 'message' => 'Invalid ID number provided.']);
+    exit;
+}
+
+// Perform KYC verification securely on the backend
+$kycData = verifyKycIdentity($id_number);
+
+if (!isset($kycData['status']) || $kycData['status'] !== 'verified') {
+    $errorMsg = $kycData['message'] ?? 'Unknown error';
+    echo json_encode([
+        'success' => false,
+        'message' => 'KYC verification failed: ' . $errorMsg
+    ]);
+    exit;
+}
 
 // Update user status to pending
 $stmt = $db->con->prepare("UPDATE `user` SET `status` = 'pending' WHERE `user_id` = ? AND `status` != 'pending'");

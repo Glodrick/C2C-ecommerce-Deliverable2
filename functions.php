@@ -173,3 +173,50 @@ function renderCartRow(array $item): void
     </div>
     HTML;
 }
+
+// ════════════════════════════════════════════════════════════════
+// HELPER: verifyKycIdentity($idNumber)
+// Securely verify an ID number against the VerifyNow API
+// ════════════════════════════════════════════════════════════════
+define('VERIFYNOW_API_KEY', 'vn_live_85175b1c66de25f2bde3d53d12b7e772eb80a5fa221d042b80ea3ac5f49c9049');
+
+function verifyKycIdentity(string $idNumber): array
+{
+    $url = 'https://www.verifynow.co.za/api/external/verify';
+    
+    $payload = json_encode([
+        'bundle' => 'kyc_bundle',
+        'idNumber' => $idNumber,
+        'mode' => 'sandbox'
+    ]);
+    
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'x-api-key: ' . VERIFYNOW_API_KEY,
+        'Idempotency-Key: kyc-txn-' . uniqid() . '-' . time()
+    ]);
+    
+    // Using false for local dev environment SSL issues
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    
+    if ($httpCode >= 200 && $httpCode < 300 && $response) {
+        $data = json_decode($response, true);
+        if (is_array($data)) {
+            return $data;
+        }
+    }
+    
+    return [
+        'status' => 'failed',
+        'match_score' => 0,
+        'message' => 'API request failed or returned invalid response.'
+    ];
+}

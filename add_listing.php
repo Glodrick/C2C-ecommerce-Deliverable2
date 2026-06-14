@@ -101,43 +101,9 @@ document.getElementById('listing-form').addEventListener('submit', async functio
         formData.append('item_image', fileInput.files[0]);
     }
 
-    // 1. Perform KYC Verification
+    // 1. Submit Listing to our backend (which will handle KYC securely)
     try {
-        const idempotencyKey = 'txn-' + Math.random().toString(36).substr(2, 9) + '-' + Date.now();
-        
-        // Use external API as requested
-        const kycResponse = await fetch('https://www.verifynow.co.za/api/external/verify', {
-            method: 'POST',
-            headers: {
-                'x-api-key': 'vn_live_abc123...',
-                'Content-Type': 'application/json',
-                'Idempotency-Key': idempotencyKey
-            },
-            body: JSON.stringify({
-                bundle: 'kyc_bundle',
-                idNumber: document.getElementById('id_number').value,
-                mode: 'sandbox'
-            })
-        });
-
-        let kycData = null;
-        if (kycResponse.ok) {
-            kycData = await kycResponse.json();
-        } else {
-            // Because this is a mock API, it will likely fail 404 or CORS.
-            // We will simulate a successful KYC pass if it fails so the app can continue working locally.
-            console.warn("VerifyNow API failed or is unreachable (expected for mock URL). Simulating success.");
-            kycData = {
-                status: 'verified',
-                match_score: 95,
-                timestamp: new Date().toISOString()
-            };
-        }
-
-        // 2. Submit Listing to our backend
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving Listing...';
-        
-        formData.append('kyc_data', JSON.stringify(kycData));
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying KYC & Saving Listing...';
         
         const saveResponse = await fetch('submit_listing.php', {
             method: 'POST',

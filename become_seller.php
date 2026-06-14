@@ -115,41 +115,10 @@ document.getElementById('seller-form').addEventListener('submit', async function
     }
 
     try {
-        // Step 1: KYC Verification via VerifyNow API
-        const idempotencyKey = 'seller-kyc-' + Math.random().toString(36).substr(2, 9) + '-' + Date.now();
-
-        let kycData;
-        try {
-            const kycResponse = await fetch('https://www.verifynow.co.za/api/external/verify', {
-                method: 'POST',
-                headers: {
-                    'x-api-key': 'vn_live_abc123...',
-                    'Content-Type': 'application/json',
-                    'Idempotency-Key': idempotencyKey
-                },
-                body: JSON.stringify({
-                    bundle: 'kyc_bundle',
-                    idNumber: idNumber,
-                    mode: 'sandbox'
-                })
-            });
-            kycData = kycResponse.ok ? await kycResponse.json() : null;
-        } catch (err) {
-            kycData = null;
-        }
-
-        // Graceful fallback — simulate success if external API unreachable (local dev)
-        if (!kycData) {
-            console.warn('VerifyNow API unreachable — simulating success for local testing.');
-            kycData = { status: 'verified', match_score: 95, timestamp: new Date().toISOString() };
-        }
-
-        // Step 2: Submit application to backend
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting Application...';
+       
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying & Submitting...';
 
         const formData = new FormData();
-        formData.append('kyc_status', kycData.status ?? 'unknown');
-        formData.append('kyc_match_score', kycData.match_score ?? 0);
         formData.append('id_number', idNumber);
 
         const saveResponse = await fetch('submit_seller_application.php', {

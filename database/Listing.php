@@ -34,9 +34,7 @@ class Listing
         return $result;
     }
 
-    /**
-     * Get pending listings for a specific seller
-     */
+
     public function getPendingListings($seller_id)
     {
         $seller_id = (int)$seller_id;
@@ -54,9 +52,7 @@ class Listing
         return $resultArray;
     }
 
-    /**
-     * Get all pending listings for admin queue
-     */
+  
     public function getAllPendingListings()
     {
         $stmt = $this->db->con->prepare(
@@ -76,14 +72,11 @@ class Listing
         return $resultArray;
     }
 
-    /**
-     * Approve a listing
-     */
     public function approveListing($listing_id)
     {
         $listing_id = (int)$listing_id;
         
-        // Get listing
+
         $stmt = $this->db->con->prepare("SELECT * FROM `pending_listing` WHERE `listing_id` = ? AND `kyc_status` != 'approved'");
         $stmt->bind_param('i', $listing_id);
         $stmt->execute();
@@ -104,7 +97,7 @@ class Listing
             $stmt->execute();
             $stmt->close();
 
-            // Update pending status
+            
             $stmt = $this->db->con->prepare("UPDATE `pending_listing` SET `kyc_status` = 'approved' WHERE `listing_id` = ?");
             $stmt->bind_param('i', $listing_id);
             $stmt->execute();
@@ -118,9 +111,7 @@ class Listing
         }
     }
 
-    /**
-     * Reject a listing
-     */
+
     public function rejectListing($listing_id)
     {
         $listing_id = (int)$listing_id;

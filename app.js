@@ -38,20 +38,18 @@ $(document).ready(function() {
         $("#relatedCarousel").owlCarousel(productCarouselConfig);
     }
 
-    // ── AJAX Cart Functionality ───────────────────────────────────
 
-    // Update cart badge utility
     function updateCartBadge(count) {
         $('.cart-badge').text(count);
     }
 
-    // Add to Cart (Product Cards / Detail Page)
+  
     $(document).on('click', '.add-to-cart-btn', function(e) {
         e.preventDefault();
         const btn = $(this);
         const itemId = btn.data('item-id');
         
-        // Simple visual feedback
+      
         const originalContent = btn.html();
         btn.html('<i class="fas fa-spinner fa-spin"></i>');
         btn.prop('disabled', true);
@@ -88,7 +86,7 @@ $(document).ready(function() {
         });
     });
 
-    // Buy Now (Product Detail Page)
+    
     $(document).on('click', '.buy-now-btn', function(e) {
         e.preventDefault();
         const btn = $(this);
@@ -124,7 +122,6 @@ $(document).ready(function() {
         });
     });
 
-    // Cart Quantity Increment/Decrement
     $(document).on('click', '.cart-qty-btn', function(e) {
         e.preventDefault();
         const btn = $(this);
@@ -138,13 +135,13 @@ $(document).ready(function() {
             currentQty--;
         }
 
-        if (currentQty < 1) currentQty = 1; // Don't drop below 1 here (use remove btn to delete)
+        if (currentQty < 1) currentQty = 1; 
         if (currentQty > 99) currentQty = 99;
 
-        // Visual update immediately
+        
         input.val(currentQty);
 
-        // AJAX update
+        
         $.ajax({
             url: 'cart_action.php',
             type: 'POST',
@@ -170,7 +167,7 @@ $(document).ready(function() {
         });
     });
 
-    // Remove Item from Cart AJAX
+    
     $(document).on('click', '.remove-item-link', function(e) {
         e.preventDefault();
         const link = $(this);

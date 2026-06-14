@@ -71,13 +71,10 @@ class User
         return $row;
     }
 
-    /**
-     * Register a new user.
-     * Uses PHP's password_hash() with PASSWORD_DEFAULT (bcrypt).
-     */
+   
     public function register($first_name, $last_name, $email, $username, $password, $role = 'buyer')
     {
-        // Hash the password securely using bcrypt
+       
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $now             = date('Y-m-d H:i:s');
 
@@ -98,10 +95,7 @@ class User
         return $result ? $new_id : false;
     }
 
-    /**
-     * Verify login credentials.
-     * Uses password_verify() — compatible with password_hash(PASSWORD_DEFAULT).
-     */
+   
     public function login($email, $password)
     {
         $stmt = $this->db->con->prepare(
@@ -118,20 +112,18 @@ class User
         if (!$user) return false;
         if ($user['status'] === 'banned' || $user['status'] === 'suspended') return false;
 
-        // Verify using PHP's native password_verify() — never MD5/SHA1
+       
         if (password_verify($password, $user['password_hash'])) {
-            // Update last_active timestamp
+           
             $this->updateLastActive($user['user_id']);
-            unset($user['password_hash']); // Never return the hash
+            unset($user['password_hash']); 
             return $user;
         }
 
         return false;
     }
 
-    /**
-     * Update the last_active timestamp for a user.
-     */
+  
     public function updateLastActive($user_id)
     {
         $user_id = (int)$user_id;
@@ -144,9 +136,7 @@ class User
         $stmt->close();
     }
 
-    /**
-     * Check if an email already exists in the database.
-     */
+  
     public function emailExists($email)
     {
         $stmt = $this->db->con->prepare(

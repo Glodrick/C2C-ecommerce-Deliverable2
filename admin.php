@@ -38,7 +38,7 @@ $stmt_ps->close();
             </a>
         </div>
 
-        <!-- Stats bar -->
+        
         <div class="row" style="margin-bottom:30px;">
             <div class="col-sm-3">
                 <div style="background:#fff;border-radius:12px;padding:20px;text-align:center;
@@ -77,7 +77,7 @@ $stmt_ps->close();
         </div>
 
         <div class="dashboard-container">
-            <!-- Toolbar -->
+         
             <div class="table-toolbar">
                 <div class="toolbar-left">
                     <div class="search-box">
@@ -106,7 +106,7 @@ $stmt_ps->close();
                 </div>
             </div>
 
-            <!-- Table -->
+            
             <div class="table-responsive">
                 <table class="table admin-table" id="usersTable">
                     <thead>
@@ -132,7 +132,7 @@ $stmt_ps->close();
                             $joined     = $u['register_date'] ? date('d M, Y', strtotime($u['register_date'])) : '—';
                             $last_active = $u['last_active'] ? date('d M, Y', strtotime($u['last_active'])) : '—';
 
-                            // Map status to CSS class
+                            
                             $statusClass = match($status) {
                                 'active'    => 'status-active',
                                 'inactive'  => 'status-inactive',
@@ -184,7 +184,7 @@ $stmt_ps->close();
             </div>
         </div>
     </div>
-            <!-- Pending Seller Applications -->
+            
             <div style="margin-top:50px;">
                 <h3 style="color:#2b3b4e;font-weight:700;margin-bottom:20px;">
                     <i class="fas fa-user-tie" style="color:#f39c12;margin-right:10px;"></i>Pending Seller Applications
@@ -221,7 +221,7 @@ $stmt_ps->close();
                 </div>
             </div>
 
-            <!-- Seller Moderation Queue -->
+            
             <div style="margin-top:50px;">
                 <h3 style="color:#2b3b4e;font-weight:700;margin-bottom:20px;">Seller Moderation Queue</h3>
                 <div class="table-responsive">
